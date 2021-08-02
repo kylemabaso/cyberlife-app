@@ -22,7 +22,7 @@ export default function Header() {
     return (
         <header className="lg:px-16 px-6 mt-30 flex flex-wrap items-center pt-10 pb-10">
             <div className="flex-1 flex justify-between items-center">
-                <Link>
+                <Link  to="/">
                     <img src={icon} style={{height: "50px"}} alt="Cyberlife"/>  
                 </Link>
             </div>
@@ -34,13 +34,13 @@ export default function Header() {
             <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
                 <nav>
                     <ul className="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-                        <li><a className="bg-grey-900 hover:bg-yellow-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleLogout} style={{ cursor:'pointer'}}>Logout</a></li>
+                        <li><button className="bg-grey-900 hover:bg-yellow-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleLogout} style={{ cursor:'pointer'}}>Logout</button></li>
                     </ul>
                 </nav>
 
-                <a href="#" className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor">
+                <button className="lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor">
                     <img className="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400" src={currentUser.photoURL} alt={currentUser.displayName} />
-                </a>
+                </button>
             </div>
         </header>
     )

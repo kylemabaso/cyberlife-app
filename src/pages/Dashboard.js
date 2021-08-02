@@ -1,13 +1,12 @@
-import React, { useState, useCallback, useRef } from "react"
+import React, { useState } from "react"
 // import {  useHistory } from "react-router-dom"
 import Header from '../components/ui/Header';
 import { Cbuilder } from "../components/cbuilder/Cbuilder";
 import { Button } from "../components/cbuilder/Button";
 import { useForm, Controller } from "react-hook-form";
-import TouserIcon from "../components/cbuilder/TouserIcon";
+import Pants from "../components/cbuilder/Pants";
 import { TwitterPicker } from "react-color";
 import { ReactDatez } from "react-datez";
-import { toPng } from 'html-to-image';
 
 import developer from '../images/developer.png'
 import chef from '../images/chef.png'
@@ -19,8 +18,6 @@ import foHead from '../images/old-f-head.png'
 import moHead from '../images/old-m-head.png'
 import logo from '../images/logo.svg'
 
-
-
 export default function Dashboard() {
   // const [ error, setError ] = useState("");
   // const history = useHistory();
@@ -30,30 +27,24 @@ export default function Dashboard() {
   const [age, setAge] = useState([]);
   const [date, setDate] = useState('');
  
-
   const {watch, register, formState, handleSubmit, control
-  } = useForm( {mode: "all" });
+    } = useForm( {mode: "all" });
   const { errors, isValid } = formState;
 
-
-
   const maxSteps = 2;
-
 
   const handleGender=(e)=>{
     setGender(e.target.value);    
  }
 
-
   const completedFormStep = () => {
     setCurrentStep( current => current + 1)
   }
 
-  const prevStep= () => {
-    setCurrentStep( current => current - 1)
-  }
+  // const prevStep= () => {
+  //   setCurrentStep( current => current - 1)
+  // }
   
-
   const getAge = (event) => {
     const today = new Date();
     const birthDay = new Date(event);
@@ -396,7 +387,7 @@ export default function Dashboard() {
               <div className="pants flex justify-center">
             
 
-             {color === '#ffffff' ? '' :   <TouserIcon fillColor={color} />}
+             {color === '#ffffff' ? '' :   <Pants fillColor={color} />}
          
               </div>
               </div>
