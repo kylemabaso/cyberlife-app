@@ -43,9 +43,9 @@ export default function Dashboard() {
     setCurrentStep((current) => current + 1);
   };
 
-  const prevStep= () => {
-    setCurrentStep( current => current - 1)
-  }
+  const prevStep = () => {
+    setCurrentStep((current) => current - 1);
+  };
 
   const getAge = (event) => {
     const today = new Date();
@@ -80,18 +80,20 @@ export default function Dashboard() {
   };
 
   const SaveCharacter = () => {
-    firebase.firestore().collection('characters').doc(currentUser.uid).set({
-      name: values.name,
-      surname: values.surname,
-      age: values.age,
-      // gender: values.gender,
-      // occupation: values.occupation,
-      color: values.color,
-    }).then (( characterData ) =>
-    console.log('Saved Successfully')
-    ).catch(( error ) =>
-    console.error(error)
-    )
+    firebase
+      .firestore()
+      .collection("characters")
+      .doc(currentUser.uid)
+      .set({
+        name: values.name,
+        surname: values.surname,
+        age: values.age,
+        // gender: values.gender,
+        // occupation: values.occupation,
+        color: values.color,
+      })
+      .then((data) => console.log("Saved Successfully", data))
+      .catch((error) => console.error(error));
 
     // console.log(JSON.stringify(values));
   };
@@ -234,15 +236,16 @@ export default function Dashboard() {
                           />
                         )}
                       />
-
                     </div>
 
                     {console.log(age)}
-                    {age < 18 && age !== undefined  ? (
+                    {age < 18 && age !== undefined ? (
                       <p className="error-message m-2">
                         Age should be over 18{" "}
-                      </p> 
-                    ) : ''}
+                      </p>
+                    ) : (
+                      ""
+                    )}
 
                     <div className={age >= 18 ? "wrapper" : "hidden-wrapper"}>
                       <div className="w-full px-3 mb-6 md:mb-0 pt-2">
@@ -341,37 +344,36 @@ export default function Dashboard() {
                           {}
                         </Controller>
                       </div>
-                      
-                      {currentStep === 1 && (
-                         <div className="pt-2-buttons w-full mb-6 md:mb-0 mt-5">
-                            <button
-                              className="bg-grey-600 hover:bg-green-800 text-white uppercase py-1 px-5 mx-3 rounded focus:outline-none focus:shadow-outline"
-                              type="button"
-                              onClick={prevStep}
-                          >Previous</button>
 
-                            <Button
-                              className="w-full px-3 mb-6 md:mb-0 mt-2"
-                              currentStep={currentStep}
-                              completedFormStep={completedFormStep}
-                              isValid={isValid}
+                      {currentStep === 1 && (
+                        <div className="pt-2-buttons w-full mb-6 md:mb-0 mt-5">
+                          <button
+                            className="bg-grey-600 hover:bg-green-800 text-white uppercase py-1 px-5 mx-3 rounded focus:outline-none focus:shadow-outline"
+                            type="button"
+                            onClick={prevStep}
+                          >
+                            Previous
+                          </button>
+
+                          <Button
+                            className="w-full px-3 mb-6 md:mb-0 mt-2"
+                            currentStep={currentStep}
+                            completedFormStep={completedFormStep}
+                            isValid={isValid}
                           />
-                         </div>
+                        </div>
                       )}
-                       
                     </div>
                   </div>
                 )}
 
-                
-                          {currentStep === 0 && (
-                          <Button
-                          currentStep={currentStep}
-                          completedFormStep={completedFormStep}
-                          isValid={isValid}
-                          />
-                      )}
-
+                {currentStep === 0 && (
+                  <Button
+                    currentStep={currentStep}
+                    completedFormStep={completedFormStep}
+                    isValid={isValid}
+                  />
+                )}
               </div>
             </Cbuilder>
           </div>
@@ -433,7 +435,6 @@ export default function Dashboard() {
 
                 <div className="blurb">
                   <h1 className="font-bold pt-10" style={{ fontSize: "36px" }}>
-                    
                     {entries.name && entries.surname ? (
                       <span className="typing">
                         My name is {entries.name} {entries.surname}!{" "}
@@ -443,11 +444,11 @@ export default function Dashboard() {
                     )}{" "}
                   </h1>
 
-                  <h3 className="pt-10" style={{ fontSize: "24px"}}>
+                  <h3 className="pt-10" style={{ fontSize: "24px" }}>
                     {age > 0 && `I'm ${age} years old, and work as a`}{" "}
                     {entries.occupation !== "Selected" && (
-                      <span className="uppercase">{entries.occupation}.</span>  
-                    )} 
+                      <span className="uppercase">{entries.occupation}.</span>
+                    )}
                   </h3>
                 </div>
               </div>

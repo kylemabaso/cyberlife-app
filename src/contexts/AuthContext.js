@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
   }
 
   function authWithGoogle() {
-    return auth.signInWithPopup(provider);
+    return auth.signInWithRedirect(provider);
   }
 
   function logIn(email, password) {

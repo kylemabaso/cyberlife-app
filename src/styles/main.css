@@ -92,6 +92,7 @@ button:disabled {
 @media only screen and (min-width: 320px) {
   .head {
     padding-top: 10px;
+    min-height: 114px;
   }
 
   .pants svg {
@@ -115,6 +116,7 @@ button:disabled {
 @media only screen and (min-width: 375px) {
   .head {
     padding-top: 10px;
+    min-height: 114px;
   }
   .pants svg {
     margin-top: -42px;
@@ -137,6 +139,7 @@ button:disabled {
 @media only screen and (min-width: 768px) {
   .head {
     padding-top: 10px;
+    min-height: 114px;
   }
   .pants svg {
     margin-top: -46px;
