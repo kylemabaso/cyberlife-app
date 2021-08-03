@@ -141,11 +141,11 @@ export default function Dashboard() {
           <div className="my-1 px-1 w-full overflow-hidden sm:my-1 sm:px-1 md:my-1 md:px-1 lg:my-1 lg:px-1 lg:w-1/3 xl:my-1 xl:px-1 xl:w-1/3 form-border">
             <Cbuilder
               onSubmit={handleSubmit(SaveCharacter)}
-              className="w-full max-w-lg"
+              className="w-full lg:max-w-lg"
             >
               {currentStep < maxSteps && (
                 <div className="flex-auto">
-                  <div className="title">
+                  <div className="title mx-4">
                     &raquo; Step {currentStep + 1} of {maxSteps}
                   </div>
                 </div>
@@ -239,9 +239,9 @@ export default function Dashboard() {
 
                     {console.log(age)}
                     {age < 18 && age !== undefined  ? (
-                      <small className="error-message m-2">
+                      <p className="error-message m-2">
                         Age should be over 18{" "}
-                      </small> 
+                      </p> 
                     ) : ''}
 
                     <div className={age >= 18 ? "wrapper" : "hidden-wrapper"}>
@@ -297,7 +297,7 @@ export default function Dashboard() {
                             Chef
                           </option>
                           <option value="Yoga instructor" name="yogaInstructor">
-                            Yoga instructor
+                            Yoga Instructor
                           </option>
                           <option value="Developer" name="developer">
                             Developer
@@ -306,7 +306,7 @@ export default function Dashboard() {
                             value="Social media influencer "
                             name="socialMediaInfluencer "
                           >
-                            Social media influencer
+                            Social Media Influencer
                           </option>
                         </select>
                       </div>
@@ -343,9 +343,9 @@ export default function Dashboard() {
                       </div>
                       
                       {currentStep === 1 && (
-                         <div className="pt-2-buttons w-full px-3 mb-6 md:mb-0 mt-5">
+                         <div className="pt-2-buttons w-full mb-6 md:mb-0 mt-5">
                             <button
-                              className="bg-grey-600 hover:bg-grey-500 text-white uppercase py-1 px-5 rounded focus:outline-none focus:shadow-outline mr-3"
+                              className="bg-grey-600 hover:bg-green-800 text-white uppercase py-1 px-5 mx-3 rounded focus:outline-none focus:shadow-outline"
                               type="button"
                               onClick={prevStep}
                           >Previous</button>
