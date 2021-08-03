@@ -43,9 +43,9 @@ export default function Dashboard() {
     setCurrentStep((current) => current + 1);
   };
 
-  // const prevStep= () => {
-  //   setCurrentStep( current => current - 1)
-  // }
+  const prevStep= () => {
+    setCurrentStep( current => current - 1)
+  }
 
   const getAge = (event) => {
     const today = new Date();
@@ -235,15 +235,10 @@ export default function Dashboard() {
                         )}
                       />
 
-                      {/*                        
-                            <input
-                              type="hidden"
-                              id="age"
-                              name="age"
-                              
-                            /> */}
                     </div>
-                    {age < 18 || age === '' ? (
+
+                    {console.log(age)}
+                    {age < 18 && age !== undefined  ? (
                       <small className="error-message m-2">
                         Age should be over 18{" "}
                       </small> 
@@ -317,10 +312,6 @@ export default function Dashboard() {
                       </div>
 
                       <div className="w-full px-3 mb-6 md:mb-0 pt-2">
-                        {/* <span 
-                          className="button-picker"
-                          onClick={() => setShowPicker(showPicker => !showPicker)}> {showPicker ? 'Close' : 'Show Color Picker'} </span> */}
-
                         <label
                           className="block capitalize tracking-wide text-gray-700 mb-2"
                           htmlFor="grid-color"
@@ -350,17 +341,37 @@ export default function Dashboard() {
                           {}
                         </Controller>
                       </div>
+                      
+                      {currentStep === 1 && (
+                         <div className="pt-2-buttons w-full px-3 mb-6 md:mb-0 mt-5">
+                            <button
+                              className="bg-grey-600 hover:bg-grey-500 text-white uppercase py-1 px-5 rounded focus:outline-none focus:shadow-outline mr-3"
+                              type="button"
+                              onClick={prevStep}
+                          >Previous</button>
+
+                            <Button
+                              className="w-full px-3 mb-6 md:mb-0 mt-2"
+                              currentStep={currentStep}
+                              completedFormStep={completedFormStep}
+                              isValid={isValid}
+                          />
+                         </div>
+                      )}
+                       
                     </div>
                   </div>
                 )}
 
-                <div className="w-full px-3 mb-6 mt-3 md:mb-0">
-                  <Button
-                    currentStep={currentStep}
-                    completedFormStep={completedFormStep}
-                    isValid={isValid}
-                  />
-                </div>
+                
+                          {currentStep === 0 && (
+                          <Button
+                          currentStep={currentStep}
+                          completedFormStep={completedFormStep}
+                          isValid={isValid}
+                          />
+                      )}
+
               </div>
             </Cbuilder>
           </div>
