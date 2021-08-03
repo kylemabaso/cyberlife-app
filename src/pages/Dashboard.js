@@ -417,26 +417,28 @@ export default function Dashboard() {
 
               <div className="my-1 px-1 w-full overflow-hidden sm:my-1 sm:px-1 md:my-1 md:px-1 lg:my-1 lg:px-1 lg:w-1/2 xl:my-1 xl:px-1 xl:w-1/2">
                 <div className="brand">
-                  <img src={logo} style={{ height: "100px" }} alt="Cyberlife" />
+                  <img src={logo} style={{ height: "80px" }} alt="Cyberlife" />
                 </div>
 
-                <h1 className="font-bold" style={{ fontSize: "22px" }}>
-                  Hi there,{" "}
-                  {entries.name && entries.surname ? (
-                    <span className="typing">
-                      my name is {entries.name} {entries.surname}!{" "}
-                    </span>
-                  ) : (
-                    ""
-                  )}{" "}
-                </h1>
+                <div className="blurb">
+                  <h1 className="font-bold pt-10" style={{ fontSize: "36px" }}>
+                    
+                    {entries.name && entries.surname ? (
+                      <span className="typing">
+                        My name is {entries.name} {entries.surname}!{" "}
+                      </span>
+                    ) : (
+                      ""
+                    )}{" "}
+                  </h1>
 
-                <h3>
-                  {age > 0 && `and I am ${age} years old. I work as a`}{" "}
-                  {entries.occupation !== "Selected" && (
-                    <span>{entries.occupation} </span>
-                  )}
-                </h3>
+                  <h3 className="pt-10" style={{ fontSize: "24px"}}>
+                    {age > 0 && `I'm ${age} years old, and work as a`}{" "}
+                    {entries.occupation !== "Selected" && (
+                      <span className="uppercase">{entries.occupation}.</span>  
+                    )} 
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
