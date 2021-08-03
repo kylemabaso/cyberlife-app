@@ -92,7 +92,7 @@ export default function Dashboard() {
         // occupation: values.occupation,
         color: values.color,
       })
-      .then((data) => console.log("Saved Successfully", data))
+      .then(console.log("Saved Successfully", values))
       .catch((error) => console.error(error));
 
     // console.log(JSON.stringify(values));
