@@ -12,6 +12,7 @@ textarea {
 html,
 body {
   background-image: url("../images/bg.svg");
+  background-repeat: none;
   height: 100vh;
   font-family: "Josefin Sans", sans-serif;
   line-height: 1.8;
