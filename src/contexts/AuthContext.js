@@ -1,66 +1,66 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../firebase'
-import firebase from 'firebase';
+import React, { useContext, useState, useEffect } from "react";
+import { auth } from "../firebase";
+import firebase from "firebase/app";
 
 const AuthContext = React.createContext();
 
-export function useAuth() { 
-    return useContext(AuthContext);
+export function useAuth() {
+  return useContext(AuthContext);
 }
 
-export function AuthProvider({ children}) {
-    const [ currentUser, setCurrentUser ] = useState();
-    const [ loading, setLoading ] = useState(true);
-    const provider = new firebase.auth.GoogleAuthProvider();
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
+  const provider = new firebase.auth.GoogleAuthProvider();
 
-    function signUp(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password);
-    }
+  function signUp(email, password) {
+    return auth.createUserWithEmailAndPassword(email, password);
+  }
 
-    function authWithGoogle() {
-        return auth.signInWithPopup(provider);
-    }
+  function authWithGoogle() {
+    return auth.signInWithPopup(provider);
+  }
 
-    function logIn(email, password) {
-        return auth.signInWithEmailAndPassword(email, password);
-    }
+  function logIn(email, password) {
+    return auth.signInWithEmailAndPassword(email, password);
+  }
 
-    function logOut() {
-        return auth.signOut()
-      }
-    
-    // function resetPassword(email) {
-    //     return auth.sendPasswordResetEmail(email)
-    // }
+  function logOut() {
+    return auth.signOut();
+  }
 
-    // function updateEmail(email) {
-    //     return currentUser.updateEmail(email)
-    // }
+  // function resetPassword(email) {
+  //     return auth.sendPasswordResetEmail(email)
+  // }
 
-    // function updatePassword(password) {
-    //     return currentUser.updatePassword(password)
-    // }
+  // function updateEmail(email) {
+  //     return currentUser.updateEmail(email)
+  // }
 
-    useEffect(() => {
-        // We only want this to run when we mount our Component!
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            setCurrentUser(user);
-            setLoading(false);
-        });
+  // function updatePassword(password) {
+  //     return currentUser.updatePassword(password)
+  // }
 
-        return unsubscribe;
-    }, []);
+  useEffect(() => {
+    // We only want this to run when we mount our Component!
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
 
-    const value = {
-        currentUser,
-        logIn,
-        signUp,
-        logOut,
-        authWithGoogle
-    }
-    return (
-        <AuthContext.Provider value={ value }>
-            { !loading && children }
-        </AuthContext.Provider>
-    );
+    return unsubscribe;
+  }, []);
+
+  const value = {
+    currentUser,
+    logIn,
+    signUp,
+    logOut,
+    authWithGoogle,
+  };
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }

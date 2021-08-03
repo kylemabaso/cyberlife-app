@@ -1,9 +1,8 @@
 import React from "react";
 
-export const Cbuilder = ({children, ...props}) => {
-
+export const Cbuilder = ({ children, ...props }) => {
   return (
-    <form {...props}  noValidate>
+    <form {...props} noValidate>
       {children}
     </form>
   );
